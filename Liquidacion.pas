@@ -110,8 +110,10 @@ begin
 
       else if (dmvar13.swAuxCliCon) and (not dmvar13.personacnv.sw_cmi_x_cob) then //ces 23/01/2006
         chara11 := chara11 + Busca_AuxCliente(dmvar13.swAuxCliCon, tp_concepto);
-    if chara11[13] = '&' then
-      chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+
+    chara11 := reemplazaAuxiliarContable(chara11);
+    // if chara11[13] = '&' then
+    //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
     if chara11[13] = '#' then
       chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
     if chara11[13] = '-' then
@@ -551,8 +553,10 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
         cant1 := 100;
       //chara11 := arma_cuenta('Inv', true, true, dmvar.titulo.nu_moneda, 1, 'C') + trim(busca_auxcliente(true, 0)) + trim(busca_auxtitulo);  11048
       chara11 := arma_cuenta('Inv', true, true, dmvar.titulo.nu_moneda, 1, 'C');
-      if chara11[13] = '&' then
-        chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+      
+      chara11 := reemplazaAuxiliarContable(chara11);
+      // if chara11[13] = '&' then
+      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
       if chara11[13] = '#' then
         chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
       if chara11[13] = '%' then
@@ -666,8 +670,10 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
 
           else if dmvar13.tptcontcnv.sw_perdida then
             chara11 := arma_cuenta(chara, true, true, dmvar.titulo.nu_moneda, 1, 'C');
-          if chara11[13] = '&' then
-            chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+
+          chara11 := reemplazaAuxiliarContable(chara11);           
+          // if chara11[13] = '&' then
+          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
           if chara11[13] = '#' then
             chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
           if chara11[13] = '-' then
@@ -716,8 +722,9 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
 
         //chara11 := arma_cuenta('Inv', true, true, dmvar.titulo.nu_moneda, 1, 'C') + trim(busca_auxcliente(true, 0));  11048
         chara11 := arma_cuenta('Inv', true, true, dmvar.titulo.nu_moneda, 1, 'C');
-        if chara11[13] = '&' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+        chara11 := reemplazaAuxiliarContable(chara11);
+        // if chara11[13] = '&' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
         if chara11[13] = '#' then
           chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '%' then
@@ -768,8 +775,9 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
 
           else if dmvar13.tptcontcnv.sw_perdida then
             chara11 := arma_cuenta(chara, true, true, dmvar.titulo.nu_moneda, 1, 'C');
-          if chara11[13] = '&' then
-            chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+          chara11 := reemplazaAuxiliarContable(chara11);  
+          // if chara11[13] = '&' then
+          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
           if chara11[13] = '#' then
             chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
           if chara11[13] = '-' then
@@ -930,8 +938,9 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
           end
           else chara11 := arma_cuenta('OPartV', true, true, dmvar.titulo.nu_moneda, 1, 'C'){ + dmvar.final.co_final};
 
-          if chara11[13] = '&' then
-            chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+          chara11 := reemplazaAuxiliarContable(chara11);
+          // if chara11[13] = '&' then
+          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
           if chara11[13] = '#' then
             chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
           if chara11[13] = '-' then
@@ -1022,8 +1031,9 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
       chara11 := copy(chara11, 1, 12);
     graba_linea(chara11 + trim(busca_auxtitulo), observa, txt('Inv M. ' + dmvar.final.co_final, 12), monto, 1, dmvar2.asignacion.tp_concepto = 1, observa1, observa2, origen, lintstr(dmvar2.asignacion.tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '15', ' ', loper(dmvar2.bolsa.nu_oper_bolsa), 0);
     chara11 := arma_cuenta('OMutuo', true, true, dmvar.titulo.nu_moneda, 1, 'C') + trim(busca_auxcliente(true, 0));
-    if chara11[13] = '&' then
-      chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+    chara11 := reemplazaAuxiliarContable(chara11);
+    // if chara11[13] = '&' then
+    //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
     if chara11[13] = '#' then
       chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
     if chara11[13] = '-' then
@@ -1096,8 +1106,9 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
 
         else if (dmvar13.swAuxCliCon) and (not dmvar13.personacnv.sw_cmi_x_cob) then //ces 23/01/2006
           chara11 := chara11 + Busca_AuxCliente(dmvar13.swAuxCliCon, tp_concepto);
-      if chara11[13] = '&' then
-        chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+      chara11 := reemplazaAuxiliarContable(chara11);    
+      // if chara11[13] = '&' then
+      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
       if chara11[13] = '#' then
         chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
       if chara11[13] = '-' then
@@ -1116,8 +1127,9 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
         chara11 := arma_cuenta('CVVxP', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(not dmvar13.personacnv.sw_gastos_cmi1, 0);   //ces 13/10/2004
         if chara11[13] = '?' then
           chara11 := copy(chara11, 1, 12) + 'CVV001';
-        if chara11[13] = '&' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+        chara11 := reemplazaAuxiliarContable(chara11);  
+        // if chara11[13] = '&' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
         if chara11[13] = '#' then
           chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
@@ -1142,8 +1154,9 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
         chara11 := arma_cuenta('CmiCVV', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(not dmvar13.personacnv.sw_gastos_cmi1, 0);   //ces 13/10/2004
         if chara11[13] = '?' then
           chara11 := copy(chara11, 1, 12) + 'CVV001';
-        if chara11[13] = '&' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+        chara11 := reemplazaAuxiliarContable(chara11);  
+        // if chara11[13] = '&' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
         if chara11[13] = '#' then
           chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
@@ -1161,8 +1174,9 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
         chara11 := arma_cuenta('CmiBVC', true, true, dmvar.titulo.nu_moneda, 1, 'C');
         if chara11[13] = '' then
           chara11 := arma_cuenta('CmiBVC', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(dmvar13.swAuxCliLiq, 0);
-        if chara11[13] = '&' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+        chara11 := reemplazaAuxiliarContable(chara11);  
+        // if chara11[13] = '&' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
         if chara11[13] = '#' then
           chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
@@ -1174,8 +1188,9 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
         if mt_iva_esp > 0 then //reverso iva especial
         begin
           chara11 := arma_cuenta('IvaOtr', tp_concepto = 1, true, dmvar.titulo.nu_moneda, 1, 'C');
-          if chara11[13] = '&' then
-            chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+          chara11 := reemplazaAuxiliarContable(chara11);
+          // if chara11[13] = '&' then
+          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
           if chara11[13] = '#' then
             chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
           if chara11[13] = '-' then
@@ -1191,8 +1206,10 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
         chara11 := arma_cuenta('CmiCVV', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(not dmvar13.personacnv.sw_gastos_cmi1, 0);   //ces 13/10/2004
         if chara11[13] = '?' then
           chara11 := copy(chara11, 1, 12) + 'CVV001';
-        if chara11[13] = '&' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+
+        chara11 := reemplazaAuxiliarContable(chara11);  
+        // if chara11[13] = '&' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
         if chara11[13] = '#' then
           chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
@@ -1980,8 +1997,9 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
 
                       else if (dmvar13.swAuxCliCon) and (not dmvar13.personacnv.sw_cmi_x_cob) then //ces 23/01/2006
                         chara11 := arma_cuenta('CmixC', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(dmvar13.swAuxCliCon, 0);
-                      if chara11[13] = '&' then
-                        chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+                      chara11 := reemplazaAuxiliarContable(chara11);  
+                      // if chara11[13] = '&' then
+                      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
                       if chara11[13] = '#' then
                         chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                       if chara11[13] = '-' then
@@ -2001,8 +2019,9 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                         chara11 := arma_cuenta('CmiCVV', true, true, dmvar.titulo.nu_moneda, 1, 'C');
                       if chara11[13] = '?' then
                         chara11 := copy(chara11, 1, 12) + 'CVV001';
-                      if chara11[13] = '&' then
-                        chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+                      chara11 := reemplazaAuxiliarContable(chara11);  
+                      // if chara11[13] = '&' then
+                      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
                       if chara11[13] = '#' then
                         chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                       if chara11[13] = '-' then
@@ -2021,8 +2040,9 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                       chara11 := arma_cuenta('CmiBVC', true, true, dmvar.titulo.nu_moneda, 1, 'C');
                       if chara11[13] = '' then
                         chara11 := arma_cuenta('CmiBVC', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(dmvar13.swAuxCliCon, 0);
-                      if chara11[13] = '&' then
-                        chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+                      chara11 := reemplazaAuxiliarContable(chara11);  
+                      // if chara11[13] = '&' then
+                      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
                       if chara11[13] = '#' then
                         chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                       if chara11[13] = '-' then
@@ -2036,8 +2056,9 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                         else
                           monto := mt_neto - mt_comision - mt_ajuste - redondea((mt_isv_comision - mt_isv_comision * mt_iva_esp / 100), 2) - mt_comision_ext + cmibolsa;
                         chara11 := arma_cuenta('OPartC', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(not dmvar13.personacnv.sw_otras_partidas, tp_concepto);   //ces 13/10/2004
-                        if chara11[13] = '&' then
-                          chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+                        chara11 := reemplazaAuxiliarContable(chara11);
+                        // if chara11[13] = '&' then
+                        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
                         if chara11[13] = '#' then
                           chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                         if chara11[13] = '-' then
@@ -2051,8 +2072,9 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                         else
                           monto := mt_neto + mt_comision + mt_ajuste + redondea((mt_isv_comision - mt_isv_comision * mt_iva_esp / 100), 2) + mt_comision_ext - cmibolsa;
                         chara11 := arma_cuenta('OPartC', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(not dmvar13.personacnv.sw_otras_partidas, tp_concepto);   //ces 13/10/2004
-                        if chara11[13] = '&' then
-                          chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+                        chara11 := reemplazaAuxiliarContable(chara11);
+                        // if chara11[13] = '&' then
+                        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
                         if chara11[13] = '#' then
                           chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                         if chara11[13] = '-' then
@@ -2062,8 +2084,9 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                         else //venta y no cruce. Cuentas por cobrar bolsa
                         begin
                           chara11 := arma_cuenta('OPartV', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(not dmvar13.personacnv.sw_otras_partidasV, tp_concepto);   //ces 13/10/2004
-                          if chara11[13] = '&' then
-                            chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
+                          chara11 := reemplazaAuxiliarContable(chara11);
+                          // if chara11[13] = '&' then
+                          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
                           if chara11[13] = '#' then
                             chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                           if chara11[13] = '-' then
