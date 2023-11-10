@@ -114,8 +114,8 @@ begin
     chara11 := reemplazaAuxiliarContable(chara11);
     // if chara11[13] = '&' then
     //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-    if chara11[13] = '#' then
-      chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+    // if chara11[13] = '#' then
+    //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
     if chara11[13] = '-' then
       chara11 := copy(chara11, 1, 12);
       //esta condicion deberia estar incluida en el parametro  //if dmvar13.swCostosLiquida //ces  17/08/2009
@@ -557,8 +557,8 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
       chara11 := reemplazaAuxiliarContable(chara11);
       // if chara11[13] = '&' then
       //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-      if chara11[13] = '#' then
-        chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+      // if chara11[13] = '#' then
+      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
       if chara11[13] = '%' then
         chara11 := copy(chara11, 1, 12) + trim(busca_auxtitulo);
       if chara11[13] = '-' then
@@ -674,8 +674,8 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
           chara11 := reemplazaAuxiliarContable(chara11);           
           // if chara11[13] = '&' then
           //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-          if chara11[13] = '#' then
-            chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+          // if chara11[13] = '#' then
+          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
           if chara11[13] = '-' then
             chara11 := copy(chara11, 1, 12);
           if chara11[13] = '@' then
@@ -725,8 +725,8 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
         chara11 := reemplazaAuxiliarContable(chara11);
         // if chara11[13] = '&' then
         //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-        if chara11[13] = '#' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+        // if chara11[13] = '#' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '%' then
           chara11 := copy(chara11, 1, 12) + trim(busca_auxtitulo);
         if chara11[13] = '-' then
@@ -778,8 +778,8 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
           chara11 := reemplazaAuxiliarContable(chara11);  
           // if chara11[13] = '&' then
           //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-          if chara11[13] = '#' then
-            chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+          // if chara11[13] = '#' then
+          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
           if chara11[13] = '-' then
             chara11 := copy(chara11, 1, 12);
           if chara11[13] = '%' then
@@ -941,8 +941,8 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
           chara11 := reemplazaAuxiliarContable(chara11);
           // if chara11[13] = '&' then
           //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-          if chara11[13] = '#' then
-            chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+          // if chara11[13] = '#' then
+          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
           if chara11[13] = '-' then
             chara11 := copy(chara11, 1, 12);
           if chara11[13] = '%' then
@@ -1034,8 +1034,8 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
     chara11 := reemplazaAuxiliarContable(chara11);
     // if chara11[13] = '&' then
     //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-    if chara11[13] = '#' then
-      chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+    // if chara11[13] = '#' then
+    //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
     if chara11[13] = '-' then
       chara11 := copy(chara11, 1, 12);
 
@@ -1109,8 +1109,8 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
       chara11 := reemplazaAuxiliarContable(chara11);    
       // if chara11[13] = '&' then
       //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-      if chara11[13] = '#' then
-        chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+      // if chara11[13] = '#' then
+      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
       if chara11[13] = '-' then
         chara11 := copy(chara11, 1, 12);
       if chara11[14] = '@' then
@@ -1130,8 +1130,8 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
         chara11 := reemplazaAuxiliarContable(chara11);  
         // if chara11[13] = '&' then
         //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-        if chara11[13] = '#' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+        // if chara11[13] = '#' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
           chara11 := copy(chara11, 1, 12);
         if chara11[13] = '@' then
@@ -1157,8 +1157,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
         chara11 := reemplazaAuxiliarContable(chara11);  
         // if chara11[13] = '&' then
         //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-        if chara11[13] = '#' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+        // if chara11[13] = '#' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
           chara11 := copy(chara11, 1, 12);
         if chara11[13] = '@' then
@@ -1177,8 +1177,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
         chara11 := reemplazaAuxiliarContable(chara11);  
         // if chara11[13] = '&' then
         //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-        if chara11[13] = '#' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+        // if chara11[13] = '#' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
           chara11 := copy(chara11, 1, 12);
         if chara11[13] = '%' then
@@ -1191,8 +1191,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
           chara11 := reemplazaAuxiliarContable(chara11);
           // if chara11[13] = '&' then
           //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-          if chara11[13] = '#' then
-            chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+          // if chara11[13] = '#' then
+          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
           if chara11[13] = '-' then
             chara11 := copy(chara11, 1, 12);
           if chara11[13] = '%' then
@@ -1210,8 +1210,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
         chara11 := reemplazaAuxiliarContable(chara11);  
         // if chara11[13] = '&' then
         //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-        if chara11[13] = '#' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+        // if chara11[13] = '#' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
           chara11 := copy(chara11, 1, 12);
         if chara11[13] = '@' then
@@ -1260,8 +1260,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
             chara11 := copy(chara11, 1, 12) + dmvar13.coAuxClienteCruce;
             chara12 := dmvar13.coAuxClienteCruce;
           end;
-        if chara11[13] = '#' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+        // if chara11[13] = '#' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
           chara11 := copy(chara11, 1, 12);
         if chara11[13] = '%' then
@@ -1371,8 +1371,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
 
         _observa := observa;
         _observa := loper(nu_oper_bolsa) + ' ' + dmvar.final.co_final + copy(display_d(ca_valor, 12, 1), 1, 10);
-        if chara11[13] = '#' then
-          chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+        // if chara11[13] = '#' then
+        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
         if chara11[13] = '-' then
           chara11 := copy(chara11, 1, 12);
         if chara11[13] = '%' then
@@ -1457,8 +1457,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
               chara11 := copy(chara11, 1, 12) + dmvar.final.co_final
             else
               chara11 := copy(chara11, 1, 12) + dmvar13.coAuxClienteCruce;
-          if chara11[13] = '#' then
-            chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+          // if chara11[13] = '#' then
+          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
           if chara11[13] = '-' then
             chara11 := copy(chara11, 1, 12);
           if chara11[13] = '%' then
@@ -1584,8 +1584,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                 chara11 := copy(chara11, 1, 12) + Busca_auxcliente(dmvar13.swAuxCliLiq, dmvar2.bolsa.tp_concepto)
               else
                 chara11 := copy(chara11, 1, 12) + dmvar13.coauxclientecruce;
-            if chara11[13] = '#' then
-              chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+            // if chara11[13] = '#' then
+            //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
             if chara11[13] = '-' then
               chara11 := copy(chara11, 1, 12);
             if chara11[13] = '%' then
@@ -1892,8 +1892,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                         chara11 := copy(chara11, 1, 12) + auxcliente
                       else
                         chara11 := copy(chara11, 1, 12) + dmvar13.coauxclientecruce;
-                    if chara11[13] = '#' then
-                      chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+                    // if chara11[13] = '#' then
+                    //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                     if chara11[13] = '-' then
                       chara11 := copy(chara11, 1, 12);
 
@@ -2000,8 +2000,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                       chara11 := reemplazaAuxiliarContable(chara11);  
                       // if chara11[13] = '&' then
                       //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-                      if chara11[13] = '#' then
-                        chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+                      // if chara11[13] = '#' then
+                      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                       if chara11[13] = '-' then
                         chara11 := copy(chara11, 1, 12);
                       if chara11[14] = '@' then
@@ -2022,8 +2022,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                       chara11 := reemplazaAuxiliarContable(chara11);  
                       // if chara11[13] = '&' then
                       //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-                      if chara11[13] = '#' then
-                        chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+                      // if chara11[13] = '#' then
+                      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                       if chara11[13] = '-' then
                         chara11 := copy(chara11, 1, 12);
                       if chara11[14] = '@' then
@@ -2043,8 +2043,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                       chara11 := reemplazaAuxiliarContable(chara11);  
                       // if chara11[13] = '&' then
                       //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-                      if chara11[13] = '#' then
-                        chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+                      // if chara11[13] = '#' then
+                      //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                       if chara11[13] = '-' then
                         chara11 := copy(chara11, 1, 12);
                       if mt_comision_bolsa < 0.01 then
@@ -2059,8 +2059,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                         chara11 := reemplazaAuxiliarContable(chara11);
                         // if chara11[13] = '&' then
                         //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-                        if chara11[13] = '#' then
-                          chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+                        // if chara11[13] = '#' then
+                        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                         if chara11[13] = '-' then
                           chara11 := copy(chara11, 1, 12);
                         graba_linea(chara11, observa, txt('Otras Part. ' + dmvar.final.co_final, 12), monto, 1, tp_concepto = 0, observa1, observa2, 'N' + ceros(lintstr(nu_neto, 8)), lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + ceros(lintstr(tp_concepto + 12, 2)), ' ', loper(nu_oper_bolsa), 0)
@@ -2075,8 +2075,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                         chara11 := reemplazaAuxiliarContable(chara11);
                         // if chara11[13] = '&' then
                         //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-                        if chara11[13] = '#' then
-                          chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+                        // if chara11[13] = '#' then
+                        //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                         if chara11[13] = '-' then
                           chara11 := copy(chara11, 1, 12);
                         if dmvar2.bolsa.tp_concepto = 5 then//venta y cruce. Cuentas por pagar bolsa
@@ -2087,8 +2087,8 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                           chara11 := reemplazaAuxiliarContable(chara11);
                           // if chara11[13] = '&' then
                           //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_final;
-                          if chara11[13] = '#' then
-                            chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
+                          // if chara11[13] = '#' then
+                          //   chara11 := copy(chara11, 1, 12) + dmvar.final.co_contable;
                           if chara11[13] = '-' then
                             chara11 := copy(chara11, 1, 12);
                           graba_linea(chara11, observa, txt('Otras Part. ' + dmvar.final.co_final, 12), monto, 1, tp_concepto = 0, observa1, observa2, 'N' + ceros(lintstr(nu_neto, 8)), lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + ceros(lintstr(tp_concepto + 12, 2)), ' ', loper(nu_oper_bolsa), 0);
