@@ -2511,8 +2511,11 @@ end;
 function Tfrmliquidacion.reemplazaAuxiliarContable(cuenta : string):string;
 var fresultado : string;
 begin
-  if cuenta[13] = '&' then
-    cuenta := copy(cuenta, 1, 12) + dmvar.final.co_final; 
+  fresultado := cuenta;
+  if fresultado[13] = '&' then
+    fresultado := copy(fresultado, 1, 12) + dmvar.final.co_final; 
+  if fresultado[13] = '#' then
+    fresultado := copy(fresultado, 1, 12) + dmvar.final.co_contable;  
   result := fresultado;
 end;                           
 
