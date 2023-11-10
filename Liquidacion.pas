@@ -33,6 +33,7 @@ type
     procedure Genera_cmi_Cli;
     procedure AjustaCodigo(var _chara11, _chara12: string);
     procedure crealog(rutarchivo: string);
+    function reemplazaAuxiliarContable(cuenta : string):string;
   public
 			{ Public declarations }
 
@@ -100,9 +101,9 @@ begin
 
 			//Debido a que no se tiene mas espacio disponible en la variable co_pagar_cmi,
 			//se utilizan los 14 digitos, si son diferentes a blanco,
-			//si en la posicion 13 existe # ó - se asigna el valor por defecto.
+			//si en la posicion 13 existe # ï¿½ - se asigna el valor por defecto.
 			//Esto se hace para mantener la asignacion del auxiliar del cliente como estava
-			//o colocarle el auxiliar de dos dígitos que seleccione el cliente
+			//o colocarle el auxiliar de dos dï¿½gitos que seleccione el cliente
     chara11 := arma_cuenta('CmixC', tp_concepto = 1, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(not dmvar13.personacnv.sw_cmi_x_cob, 0);   //ces 23/01/2006
     if (chara11[13] <> '#') and (chara11[13] <> '-') and (chara11[13] <> '&') then
       if length(chara11) > 12 then
@@ -141,9 +142,9 @@ begin
         DM00a.busca_precio(ceros(lintstr(dmvar.titulo.nu_moneda,6)),flch_a_jul(TXTdesde.text));
         ftasa := dmvar.precio.mt_precio;
       end;
-      if mt_comision + mt_ajuste > 0 then   // Jfiguera añadido if
+      if mt_comision + mt_ajuste > 0 then   // Jfiguera aï¿½adido if
         graba_linea(arma_cuenta('CmiCli', tp_concepto = 1, true, dmvar.titulo.nu_moneda, 1, 'C'), observa, ceros(lintstr(DMvar2.dfactura.nu_factura, 8)), mt_comision + mt_ajuste, ftasa, true, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '09', ' ', loper(nu_oper_bolsa), 0);
-      if mt_isv_comision > 0 then      // Jfiguera añadido if
+      if mt_isv_comision > 0 then      // Jfiguera aï¿½adido if
         graba_linea(arma_cuenta('IvaCli', tp_concepto = 1, true, dmvar.titulo.nu_moneda, 1, 'C'), observa, ceros(lintstr(DMvar2.dfactura.nu_factura, 8)), redondea(mt_isv_comision * ftasa, 2), 1, true, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '91', ' ', loper(nu_oper_bolsa), 0);
     end
     else                                                                       // Fin Jhoannys  Caso 7127 26/02/2020
@@ -154,18 +155,18 @@ begin
 
 
 
-      if mt_comision + mt_ajuste > 0 then   // Jfiguera añadido if
+      if mt_comision + mt_ajuste > 0 then   // Jfiguera aï¿½adido if
         graba_linea(arma_cuenta('CmiCli', tp_concepto = 1, true, dmvar.titulo.nu_moneda, 1, 'C'){+Busca_AuxCliente(dmvar13.swAuxCliCon)ojo}, observa, ceros(lintstr(nu_asignacion, 8)), mt_comision + mt_ajuste, ftasa, true, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '09', ' ', loper(nu_oper_bolsa), 0);
 
-      if mt_isv_comision > 0 then      // Jfiguera añadido if
+      if mt_isv_comision > 0 then      // Jfiguera aï¿½adido if
         graba_linea(arma_cuenta('IvaCli', tp_concepto = 1, true, dmvar.titulo.nu_moneda, 1, 'C'){+Busca_AuxCliente(dmvar13.swAuxCliCon)}, observa, ceros(lintstr(nu_asignacion, 8)), redondea(mt_isv_comision, 2), ftasa, true, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '91', ' ', loper(nu_oper_bolsa), 0);
     end;
 
     if mt_iva_esp > 0 then
     begin
-      if mt_comision + mt_ajuste > 0 then   // Jfiguera añadido if
+      if mt_comision + mt_ajuste > 0 then   // Jfiguera aï¿½adido if
         graba_linea(arma_cuenta('IvaAct', tp_concepto = 1, true, dmvar.titulo.nu_moneda, 1, 'C'){+Busca_AuxCliente(dmvar13.swAuxCliCon)}, observa, ceros(lintstr(nu_asignacion, 8)), redondea(mt_isv_comision * mt_iva_esp / 100, 2), 1, false, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '92', ' ', loper(nu_oper_bolsa), 0);
-      if mt_isv_comision > 0 then      // Jfiguera añadido if
+      if mt_isv_comision > 0 then      // Jfiguera aï¿½adido if
         graba_linea(arma_cuenta('IvaOtr', tp_concepto = 1, true, dmvar.titulo.nu_moneda, 1, 'C'){+Busca_AuxCliente(dmvar13.swAuxCliCon)}, observa, ceros(lintstr(nu_asignacion, 8)), redondea(mt_isv_comision * mt_iva_esp / 100, 2), 1, true, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '92', ' ', loper(nu_oper_bolsa), 0);
     end;
   end;
@@ -277,7 +278,7 @@ begin
     if dmvar.titulo.sw_f_v_u_o = 'P' then
       cant1 := 100;
     EfectivoBolsa := dmvar2.bolsa.mt_valor * dmvar2.asignacion.ca_valor / cant1 * dmvar2.bolsa.mt_tasa_cambio;
-    if (nuconcepto = 0) and ((dmvar.final.tp_cliente = 'P')) then // Jfiguera añadido la M y la Z
+    if (nuconcepto = 0) and ((dmvar.final.tp_cliente = 'P')) then // Jfiguera aï¿½adido la M y la Z
       EfectivoBolsa := EfectivoBolsa + dmvar2.bolsa.mt_comision1;
     chara := ' C ';
     if nuconcepto = 1 then
@@ -573,7 +574,7 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
             monto := (ca_valor * mt_valor / cant1 + dmvar2.bolsa.mt_comision1 * ca_valor / dmvar2.bolsa.ca_valor);
 
           if (dmvar2.calendario1.nu_corredor = 72) then        // Jfiguera 7711
-            monto := dmvar2.asignacion.mt_neto;                                                         // Jfiguera 03-09-2020 añadido ahora el corredor 71
+            monto := dmvar2.asignacion.mt_neto;                                                         // Jfiguera 03-09-2020 aï¿½adido ahora el corredor 71
 
 
           monto1 := 0;
@@ -892,12 +893,12 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
 
 
       // Jfiguera ESTE ELSE ESTABA MALISIMO, LAS CUENTAS DE OTRAS PARTIDAS SIEMPRE SE TIENEN QUE GENERAR.
-     {  else if(tp_concepto = 1) then  //ces 06/09/2019       // Jfiguera 12972 03-05-2023 añadido concepto 5
+     {  else if(tp_concepto = 1) then  //ces 06/09/2019       // Jfiguera 12972 03-05-2023 aï¿½adido concepto 5
       begin
         if (dmvar2.calendario1.nu_corredor <> 83) and
-           (dmvar2.calendario1.nu_corredor <> 72) and     //Jfiguera  7710 añadido el corredor
+           (dmvar2.calendario1.nu_corredor <> 72) and     //Jfiguera  7710 aï¿½adido el corredor
            (dmvar2.calendario1.nu_corredor <> 52) AND      // Estas son las exceciones del derecho de registro
-           (dmvar2.calendario1.nu_corredor <> 40) then    // Jfiguera 11505 añadido corredor, deberia crecer en parametro
+           (dmvar2.calendario1.nu_corredor <> 40) then    // Jfiguera 11505 aï¿½adido corredor, deberia crecer en parametro
         begin
           chara11 := arma_cuenta('OPartV', true, true, dmvar.titulo.nu_moneda, 1, 'C');    //ces 13/10/2004
           if chara11[13] = '&' then
@@ -917,13 +918,13 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
 
 
      { if (dmvar2.calendario1.nu_corredor <> 83) and
-           (dmvar2.calendario1.nu_corredor <> 72) and     //Jfiguera  7710 añadido el corredor
+           (dmvar2.calendario1.nu_corredor <> 72) and     //Jfiguera  7710 aï¿½adido el corredor
            (dmvar2.calendario1.nu_corredor <> 52) AND      // Estas son las exceciones del derecho de registro
-           (dmvar2.calendario1.nu_corredor <> 40) then    // Jfiguera 11505 añadido corredor, deberia crecer en parametro   }
+           (dmvar2.calendario1.nu_corredor <> 40) then    // Jfiguera 11505 aï¿½adido corredor, deberia crecer en parametro   }
 
         begin
 
-          if DMVAR2.ASIGNACION.tp_concepto = 0 then            // Jfiguera  7712 añadi el if, siempre armaba con la cuenta de compra
+          if DMVAR2.ASIGNACION.tp_concepto = 0 then            // Jfiguera  7712 aï¿½adi el if, siempre armaba con la cuenta de compra
           begin
             chara11 := arma_cuenta('OPartC', true, true, dmvar.titulo.nu_moneda, 1, 'C'){ + dmvar.final.co_final};
           end
@@ -1086,9 +1087,9 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
       observa2 := txt(display_d(mt_valor, 8, 2) + ' ' + co_cta_custodia, 15);
 			//Debido a que no se tiene mas espacio disponible en la variable co_pagar_cmi,
 			//se utilizan los 14 digitos, si son diferentes a blanco,
-			//si en la posicion 13 existe # ó - se asigna el valor por defecto.
+			//si en la posicion 13 existe # ï¿½ - se asigna el valor por defecto.
 			//Esto se hace para mantener la asignacion del auxiliar del cliente como estava
-			//o colocarle el auxiliar de dos dígitos que seleccione el cliente
+			//o colocarle el auxiliar de dos dï¿½gitos que seleccione el cliente
       chara11 := arma_cuenta('CmixC', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(not dmvar13.personacnv.sw_cmi_x_cob, 0);   //ces 23/01/2006
       if (chara11[13] <> '#') and (chara11[13] <> '-') and (chara11[13] <> '&') then
         if length(chara11) > 12 then
@@ -1136,7 +1137,7 @@ procedure Tfrmliquidacion.Button1Click(Sender: TObject);
             graba_linea(chara11, observa, txt('CmixC ' + dmvar.final.co_final, 12), redondea(mt_comision + mt_ajuste + mt_isv_comision, 2), {1}DMvar2.bolsa.mt_tasa_cambio, true, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '09', ' ', loper(nu_oper_bolsa), 0)
           else
         //esta condicion deberia estar incluida en el parametro  //if dmvar13.swCostosLiquida //ces  17/08/2009
-if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <> 49) and (dmvar2.calendario1.nu_corredor <> 72)) then //provincial           // Jfiguera 7710 añadido el corredor 72
+if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <> 49) and (dmvar2.calendario1.nu_corredor <> 72)) then //provincial           // Jfiguera 7710 aï¿½adido el corredor 72
             graba_linea(chara11, observa, txt('CmixC ' + dmvar.final.co_final, 12), mt_comision + mt_ajuste, {1}DMvar2.bolsa.mt_tasa_cambio, true, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '09', ' ', loper(nu_oper_bolsa), 0);
         chara11 := arma_cuenta('CmiCVV', true, true, dmvar.titulo.nu_moneda, 1, 'C') + Busca_auxcliente(not dmvar13.personacnv.sw_gastos_cmi1, 0);   //ces 13/10/2004
         if chara11[13] = '?' then
@@ -1307,7 +1308,7 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
             else
               graba_linea(chara11, _observa, txt('Otras Part. ' + dmvar.final.co_final, 12), ca_valor * (dmvar2.bolsa.mt_comision1 / 2) / dmvar2.bolsa.ca_valor, {1}DMvar2.bolsa.mt_tasa_cambio, true, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + ceros(lintstr(tp_concepto + 12, 2)), lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + ceros(lintstr(tp_concepto + 12, 2)), loper(nu_oper_bolsa), 0);
           end
-          else //lo activamos porque descuadra el asiento si esta comentariado. Faltaría cta x pagar bolsa 14/02/2006
+          else //lo activamos porque descuadra el asiento si esta comentariado. Faltarï¿½a cta x pagar bolsa 14/02/2006
             graba_linea(chara11, _observa, txt('Otras Part. ' + dmvar.final.co_final, 12), monto, {1}DMvar2.bolsa.mt_tasa_cambio, tp_concepto = 0, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + ceros(lintstr(tp_concepto + 12, 2)), ' ', loper(nu_oper_bolsa), 0);
 
           DMpapel.tbfinalaux.Close;
@@ -1365,7 +1366,7 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
         begin
           if dmvar13.swCostosLiquida then //interbursa
           begin
-           //esto estaba descuadrando el asiento. Lo comentarié ya que el asiento de BNH de la gorda salia mal     //ces 16/02/2007
+           //esto estaba descuadrando el asiento. Lo comentariï¿½ ya que el asiento de BNH de la gorda salia mal     //ces 16/02/2007
             dmvar.final := final9;
             dmvar.adicional := adiciona9;
             dmvar13.personacnv := personacnv9;
@@ -1375,7 +1376,7 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
 
             ajustacodigo(_chara11, _chara12);
             // Jfiguera 27-07-2023
-           (* if (dmvar2.calendario1.nu_corredor <> 72) then   // Jfiguera 7711 se añadio el corredor SIGO SIN SABER POR QUE NO FALLA PARA TODOS!
+           (* if (dmvar2.calendario1.nu_corredor <> 72) then   // Jfiguera 7711 se aï¿½adio el corredor SIGO SIN SABER POR QUE NO FALLA PARA TODOS!
             begin
               graba_linea(_chara11, observa, txt('Otras Part. ' + dmvar.final.co_final, 12), mt_neto, {1}DMvar2.bolsa.mt_tasa_cambio, tp_concepto = 0, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + ceros(lintstr(tp_concepto + 12, 2)), lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + ceros(lintstr(tp_concepto + 12, 2)), loper(nu_oper_bolsa), 0);
               graba_linea(_chara11, observa, txt('Otras Part. ' + dmvar.final.co_final, 12), mt_neto, {1}DMvar2.bolsa.mt_tasa_cambio, not (tp_concepto = 0), observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + ceros(lintstr(tp_concepto + 12, 2)), lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + ceros(lintstr(tp_concepto + 12, 2)), loper(nu_oper_bolsa), 0);
@@ -1447,7 +1448,7 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
             chara11 := copy(chara11, 1, 12) + trim(busca_auxtitulo);
           if dmvar13.swCostosLiquida then
           begin
-                 //esto estaba descuadrando el asiento. Lo comentarié ya que el asiento de BNH de la gorda salia mal     //ces 16/02/2007
+                 //esto estaba descuadrando el asiento. Lo comentariï¿½ ya que el asiento de BNH de la gorda salia mal     //ces 16/02/2007
             dmvar.final := final9;
             dmvar.adicional := adiciona9;
             dmvar13.personacnv := personacnv9;
@@ -1472,13 +1473,13 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
           if fl_transac <> fl_fuera then  //solo para transacciones spot   //Caso 1026 //ces 01/06/2016
             genera_cmi_cli;
 
-            // Jfiguera 8717 - 18-02-2021     Tiene pinta que voy a dañar algo
+            // Jfiguera 8717 - 18-02-2021     Tiene pinta que voy a daï¿½ar algo
       if not dmvar13.swCostosLiquida then
         if mt_iva_esp > 0 then
         begin
-//      if mt_comision + mt_ajuste > 0 then   // Jfiguera añadido if
+//      if mt_comision + mt_ajuste > 0 then   // Jfiguera aï¿½adido if
 //        graba_linea(arma_cuenta('IvaAct', tp_concepto = 1, true, dmvar.titulo.nu_moneda, 1, 'C'){+Busca_AuxCliente(dmvar13.swAuxCliCon)}, observa, ceros(lintstr(nu_asignacion, 8)), redondea(mt_isv_comision * mt_iva_esp / 100, 2), 1, false, observa1, observa2, 'A' + nu_oper_bolsa, lintstr(tp_concepto, 1) + lintstr(dmvar.titulo.nu_moneda, 1) + '92', ' ', loper(nu_oper_bolsa), 0);
-          if mt_isv_comision > 0 then      // Jfiguera añadido if
+          if mt_isv_comision > 0 then      // Jfiguera aï¿½adido if
           begin
             if (pos('MERCOSUR', uppercase(dmvar.calendario.tx_dominio)) > 0) then
 
@@ -1554,7 +1555,7 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
             carga_personacnv(DMpapel.TBtpersonacnv);
             auxcliente := Busca_auxcliente(not dmvar13.personacnv.sw_otras_partidas, dmvar2.bolsa.tp_concepto);   //ces 13/10/2004
 
-            if DMVAR2.ASIGNACION.tp_concepto = 0 then            // Jfiguera  7712 añadi el if, siempre armaba con la cuenta de compra
+            if DMVAR2.ASIGNACION.tp_concepto = 0 then            // Jfiguera  7712 aï¿½adi el if, siempre armaba con la cuenta de compra
             begin
               chara11 := arma_cuenta('OPartC', true, true, dmvar.titulo.nu_moneda, 1, 'C') + auxcliente;
             end
@@ -1821,10 +1822,10 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                       if dmvar13.swAuxClicon then  //reversos de otras partidas contables con auxiliar
                         if (dmvar2.calendario1.nu_corredor <> 61) and (dmvar2.calendario1.nu_corredor <> 10) and (dmvar2.calendario1.nu_corredor <> 49) and   //Jorge 28/12/2017
                           (dmvar2.calendario1.nu_corredor <> 68) and   //Jorge 28/12/2017
-                          (dmvar2.calendario1.nu_corredor <> 48) and // Jfiguera AÑADIDO EL 48 // BNH. LA GORDA //si lo genera, descuadra el asiento con éstos parámetros ces 13/02/2007
+                          (dmvar2.calendario1.nu_corredor <> 48) and // Jfiguera Aï¿½ADIDO EL 48 // BNH. LA GORDA //si lo genera, descuadra el asiento con ï¿½stos parï¿½metros ces 13/02/2007
                           (DMvar2.calendario1.nu_corredor <> 66) and    //CES 13/05/2019
                           (DMvar2.calendario1.nu_corredor <> 32) and    //CES 13/05/2019
-                          (dmvar2.calendario1.nu_corredor <> 64) then // Jfiguera AÑADIDO EL 77 // BNH. LA GORDA //si lo genera, descuadra el asiento con éstos parámetros ces 13/02/2007
+                          (dmvar2.calendario1.nu_corredor <> 64) then // Jfiguera Aï¿½ADIDO EL 77 // BNH. LA GORDA //si lo genera, descuadra el asiento con ï¿½stos parï¿½metros ces 13/02/2007
                           genera_reverso_cruces(observa, observa1, txclave);
                 end;    *)
 
@@ -1902,10 +1903,10 @@ if ((dmvar2.calendario1.nu_corredor <> 26) and (dmvar2.calendario1.nu_corredor <
                     if dmvar13.swAuxClicon then  //reversos de otras partidas contables con auxiliar
                       if (dmvar2.calendario1.nu_corredor <> 61) and (dmvar2.calendario1.nu_corredor <> 10) and (dmvar2.calendario1.nu_corredor <> 49) and   //Jorge 28/12/2017
                         (dmvar2.calendario1.nu_corredor <> 68) and   //Jorge 28/12/2017
-                        (dmvar2.calendario1.nu_corredor <> 48) and // Jfiguera AÑADIDO EL 48 // BNH. LA GORDA //si lo genera, descuadra el asiento con éstos parámetros ces 13/02/2007
+                        (dmvar2.calendario1.nu_corredor <> 48) and // Jfiguera Aï¿½ADIDO EL 48 // BNH. LA GORDA //si lo genera, descuadra el asiento con ï¿½stos parï¿½metros ces 13/02/2007
                         (DMvar2.calendario1.nu_corredor <> 66) and    //CES 13/05/2019
                         (DMvar2.calendario1.nu_corredor <> 32) and    //CES 13/05/2019
-                        (dmvar2.calendario1.nu_corredor <> 64) then // Jfiguera AÑADIDO EL 77 // BNH. LA GORDA //si lo genera, descuadra el asiento con éstos parámetros ces 13/02/2007
+                        (dmvar2.calendario1.nu_corredor <> 64) then // Jfiguera Aï¿½ADIDO EL 77 // BNH. LA GORDA //si lo genera, descuadra el asiento con ï¿½stos parï¿½metros ces 13/02/2007
                         genera_reverso_cruces(observa, observa1, txclave);
                 //Fin Vanessa 14/06/2023 casos 13246 / 13247
 
@@ -2484,6 +2485,13 @@ begin
   closefile(archilog);
 end;
 
+function Tfrmliquidacion.reemplazaAuxiliarContable(cuenta : string):string;
+var fresultado : string;
+begin
+  if cuenta[13] = '&' then
+    cuenta := copy(cuenta, 1, 12) + dmvar.final.co_final; 
+  result := fresultado;
+end;                           
 
 
 end.
